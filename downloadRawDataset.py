@@ -39,11 +39,15 @@ util.createDatasetFolderStructure()
 # )
 
 util.downloadImagesFromGoogle(
-    "momo historia",
-    "momo_historia",
-    10,
-    downloadpath="dataset/raw/",
-    chromedriver="/usr/local/bin/chromedriver"
+    "momo game",
+    "momo_game",
+    15,
+)
+
+util.downloadImagesFromGoogle(
+    "momo juego",
+    "momo_juego",
+    15,
 )
 
 
