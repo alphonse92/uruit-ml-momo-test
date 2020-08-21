@@ -55,7 +55,6 @@ def downloadImagesFromGoogle(
     browser.close()
     print("Start scrapping ", len(urls), " images")
 
-    errors = []
     counter = 0
     for img in urls:
         counter += 1
