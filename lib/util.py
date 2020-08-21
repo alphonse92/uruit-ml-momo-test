@@ -52,6 +52,7 @@ def downloadImagesFromGoogle(
             "return window.__GoogleImagesFullRessImages__")
         waitForScrollToEnd = urls == None
 
+    browser.close()
     print("Start scrapping ", len(urls), " images")
 
     errors = []
@@ -73,8 +74,6 @@ def downloadImagesFromGoogle(
 
         except Exception as e:
             print(e)
-
-    browser.close()
 
 
 def createDatasetFolderStructure():
