@@ -1,2 +1,5 @@
-# uruit-ml-momo-test
-Machine Learning for Uruit 
+# Requeriments
+
+install:
+
+brew  cask nstall chromedriver
