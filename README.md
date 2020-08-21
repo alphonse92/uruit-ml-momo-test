@@ -26,6 +26,7 @@ util.downloadImagesFromGoogle(
     "momo historia", # Search term on google images
     "momo_historia", # Prefix of the stored images
     10, # Max of download images
+    googleSource="www.google.com", # Google domain if you want to use .co or .in domains
     downloadpath="dataset/raw/", # Path where the images will be downloaded
     chromedriver="/usr/local/bin/chromedriver" # Path of your chromedriver app 
 )

@@ -14,13 +14,14 @@ def downloadImagesFromGoogle(
     searchterm,
     prefix,
     maxResults=50,
+    googleSource="www.google.com",
     downloadpath="dataset/raw/",
     chromedriver="/usr/local/bin/chromedriver"
 ):
 
     print("Create dataset structure")
     print("define program variables and open google images...")
-    url = "https://www.google.co.in/search?q="+searchterm+"&source=lnms&tbm=isch"
+    url = "https://"+googleSource+"/search?q="+searchterm+"&source=lnms&tbm=isch"
 
     # NEED TO DOWNLOAD CHROMEDRIVER, insert path to chromedriver inside parentheses in following line
     browser = webdriver.Chrome(chromedriver)
