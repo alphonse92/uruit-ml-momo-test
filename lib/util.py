@@ -18,7 +18,7 @@ def downloadImagesFromGoogle(
     downloadpath="dataset/raw/positive",
     chromedriver="/usr/local/bin/chromedriver"
 ):
-
+    createFolderIfNotExist(downloadpath)
     print("Create dataset structure")
     print("define program variables and open google images...")
     url = "https://"+googleSource+"/search?q="+searchterm+"&source=lnms&tbm=isch"
@@ -78,20 +78,10 @@ def downloadImagesFromGoogle(
 def createDatasetFolderStructure():
     createFolderIfNotExist("dataset")
     createFolderIfNotExist("dataset/raw")
-    createFolderIfNotExist("dataset/raw/positive")
-    createFolderIfNotExist("dataset/raw/negative")
     createFolderIfNotExist("dataset/basic")
-    createFolderIfNotExist("dataset/basic/positive")
-    createFolderIfNotExist("dataset/basic/negative")
     createFolderIfNotExist("dataset/augmented")
-    createFolderIfNotExist("dataset/augmented/positive")
-    createFolderIfNotExist("dataset/augmented/negative")
     createFolderIfNotExist("dataset/train")
-    createFolderIfNotExist("dataset/train/positive")
-    createFolderIfNotExist("dataset/train/negative")
     createFolderIfNotExist("dataset/test")
-    createFolderIfNotExist("dataset/test/positive")
-    createFolderIfNotExist("dataset/test/negative")
 
 
 def createFolderIfNotExist(folderPath):
