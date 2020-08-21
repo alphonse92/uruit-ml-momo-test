@@ -4,10 +4,16 @@ from lib import util
 
 util.createDatasetFolderStructure()
 
+# util.downloadImagesFromGoogle(
+#     "meme template",
+#     "meme_tmpl",
+#     100,
+#     downloadpath="dataset/raw/negative",
+# )
+
 util.downloadImagesFromGoogle(
-    "meme template",
-    "meme_tmpl",
-    None,
-    None,
-    "dataset/raw/negative",
+    "person photography",
+    "person_pht",
+    150,
+    downloadpath="dataset/raw/negative",
 )
