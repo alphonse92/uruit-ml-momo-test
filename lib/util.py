@@ -15,7 +15,7 @@ def downloadImagesFromGoogle(
     prefix,
     maxResults=50,
     googleSource="www.google.com",
-    downloadpath="dataset/raw/",
+    downloadpath="dataset/raw/positive",
     chromedriver="/usr/local/bin/chromedriver"
 ):
 
@@ -78,10 +78,20 @@ def downloadImagesFromGoogle(
 def createDatasetFolderStructure():
     createFolderIfNotExist("dataset")
     createFolderIfNotExist("dataset/raw")
+    createFolderIfNotExist("dataset/raw/positive")
+    createFolderIfNotExist("dataset/raw/negative")
     createFolderIfNotExist("dataset/basic")
+    createFolderIfNotExist("dataset/basic/positive")
+    createFolderIfNotExist("dataset/basic/negative")
     createFolderIfNotExist("dataset/augmented")
+    createFolderIfNotExist("dataset/augmented/positive")
+    createFolderIfNotExist("dataset/augmented/negative")
     createFolderIfNotExist("dataset/train")
+    createFolderIfNotExist("dataset/train/positive")
+    createFolderIfNotExist("dataset/train/negative")
     createFolderIfNotExist("dataset/test")
+    createFolderIfNotExist("dataset/test/positive")
+    createFolderIfNotExist("dataset/test/negative")
 
 
 def createFolderIfNotExist(folderPath):

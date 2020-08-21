@@ -3,7 +3,6 @@ import sys
 from lib import util
 
 util.createDatasetFolderStructure()
-
 util.downloadImagesFromGoogle(
     "momo",
     "momo_",
