@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "../../dataScience/datasets/momo-dataset"
 		}
 	],
 	"settings": {}
