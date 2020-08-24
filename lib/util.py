@@ -2,13 +2,17 @@
 # https://gist.github.com/genekogan/ebd77196e4bf0705db51f86431099e57
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+from tqdm import tqdm
+from sys import stdout
+
 import json
 import os
 import urllib3
 import argparse
 import urllib.request
 import time
-
+import socket
 
 def downloadImagesFromGoogle(
     searchterm,
@@ -16,18 +20,24 @@ def downloadImagesFromGoogle(
     maxResults=50,
     googleSource="www.google.com",
     downloadpath="dataset/raw/positive",
-    chromedriver="/usr/local/bin/chromedriver"
+    chromedriver="/usr/local/bin/chromedriver",
+    timeout=800
 ):
+
+    socket.setdefaulttimeout(timeout)
+
     createFolderIfNotExist(downloadpath)
-    print("Create dataset structure")
-    print("define program variables and open google images...")
+
     url = "https://"+googleSource+"/search?q="+searchterm+"&source=lnms&tbm=isch"
 
-    # NEED TO DOWNLOAD CHROMEDRIVER, insert path to chromedriver inside parentheses in following line
-    browser = webdriver.Chrome(chromedriver)
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+
+    browser = webdriver.Chrome(chromedriver, chrome_options=chrome_options)
     browser.get(url)
 
-    print("start scrolling to generate more images on the page...")
+    print("Searching ... " + searchterm)
+    print("  > Scrolling to the bottom")
 
     scriptPath = os.path.dirname(
         __file__) + "/selenium-scripts/seleniumScrollToBottom.js"
@@ -53,7 +63,8 @@ def downloadImagesFromGoogle(
         waitForScrollToEnd = urls == None
 
     browser.close()
-    print("Start scrapping ", len(urls), " images")
+
+    print("  > Start scrapping ", len(urls), " images")
 
     counter = 0
     for img in urls:
@@ -67,9 +78,9 @@ def downloadImagesFromGoogle(
                 path += "/"
             path += new_filename
 
-            print("Downloading: ", img)
+            print("  > Downloading: ", img)
             urllib.request.urlretrieve(img, path)
-            print("Saving in: ", path, "\n")
+            print("  > Saving in: ", path, "\n")
 
         except Exception as e:
             print(e)
@@ -78,10 +89,6 @@ def downloadImagesFromGoogle(
 def createDatasetFolderStructure():
     createFolderIfNotExist("dataset")
     createFolderIfNotExist("dataset/raw")
-    createFolderIfNotExist("dataset/basic")
-    createFolderIfNotExist("dataset/augmented")
-    createFolderIfNotExist("dataset/train")
-    createFolderIfNotExist("dataset/test")
 
 
 def createFolderIfNotExist(folderPath):
