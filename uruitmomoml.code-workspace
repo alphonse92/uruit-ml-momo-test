@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../../dataScience/datasets/momo-dataset"
+		},
+		{
+			"path": "../uruit-ml-momo-test-visualization"
 		}
 	],
 	"settings": {}
