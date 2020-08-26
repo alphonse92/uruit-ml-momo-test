@@ -2,3 +2,6 @@ dataset
 .DS_Store
 visualization
 result
+.dist
+dist/
+dist
